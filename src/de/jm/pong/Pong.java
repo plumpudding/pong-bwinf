@@ -22,8 +22,6 @@ public class Pong {
 		
 		while (!Display.isCloseRequested()) {
 			
-			
-			
 		    Display.update();
 		}
 		
