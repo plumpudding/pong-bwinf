@@ -4,70 +4,45 @@ import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 
-import static org.lwjgl.opengl.GL11.*;
-
 public class Pong {
-	public static int displayX = 1000;
-	public static int displayY = 600;
-	public static int gameX = 64;
-	public static int gameY = 27;
-	public static boolean[][] gameBoard = new boolean[gameX][gameY];
+	public final int displayX;
+	public final int displayY;
+	public final int gameX;
+	public final int gameY;
+	
+	public Renderer renderer;
+	public Logic logic;
+	
+	public Pong(int gameX, int gameY, int displayX, int displayY) {
+		this.gameX = gameX;
+		this.gameY = gameY;
+		this.displayX = displayX;
+		this.displayY = displayY;
+	}
 	
 	public void startGame() {
-		
-		for (int x=0;x<gameX;x++) {
-			for (int y=0;y<gameY;y++) {
-				gameBoard[x][y] = true;
-			}
-		}
 		
 		try {
 			//Create Display
 			Display.setDisplayMode(new DisplayMode (displayX, displayY));
 			Display.setFullscreen(true);
+			Display.setResizable(true);
 			Display.create();
 		} catch (LWJGLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		//Initialize OpenGL
-		glMatrixMode(GL_PROJECTION);
-		glLoadIdentity();
-		glOrtho(0, displayX, displayY, 0, 1, -1);
-		glMatrixMode(GL_MODELVIEW);
+		renderer = new Renderer();
+		logic = new Logic(gameX, gameY);
+
+		logic.drawCipher(0, 10, 2);
+		logic.drawCipher(1, 50, 2);
 		
 		while (!Display.isCloseRequested()) {
-			tick();
+			renderer.render(Logic.gameBoard);
+		    Display.update();
 		}
 		
 		Display.destroy();
 	}
-	
-	public void tick() {
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glColor4f(1f, 1f, 1f, 1f);
-		
-		for (int x=0;x<gameX;x++) {
-			for (int y=0;y<gameY;y++) {
-				if (gameBoard[x][y] == true) {
-					drawQuad(x, y);
-				}
-			}
-		}
-		
-	    Display.update();
-	}
-	
-	public void drawQuad(int posX, int posY) {
-		glBegin(GL_QUADS);
-			float ratioX = (float)displayX/gameX;
-			float ratioY = (float)displayY/gameY;
-			glVertex2f((int)(posX*(ratioX)),			(int)(posY*(ratioY)));
-			glVertex2f((int)(posX*(ratioX)+(ratioX)),	(int)(posY*(ratioY)));
-			glVertex2f((int)(posX*(ratioX)+(ratioX)),	(int)(posY*(ratioY)+ratioY));
-			glVertex2f((int)(posX*(ratioX)),			(int)(posY*(ratioY)+ratioY));
-		glEnd();
-	}
-	
 }
