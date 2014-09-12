@@ -1,4 +1,4 @@
-package de.jm.pong;
+package de.jm.pong.core;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;

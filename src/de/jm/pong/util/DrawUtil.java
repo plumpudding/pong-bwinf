@@ -1,6 +1,20 @@
-package de.jm.pong;
+package de.jm.pong.util;
 
 public class DrawUtil {
+	
+	public static void clear(int x, int y, int width, int heigth, boolean[][] gameBoard) {
+		for (int w = 0; w < width; w++) {
+			for (int h = 0; h < heigth; h++) {
+				DrawUtil.drawPoint(x+w, y+h, false, gameBoard);
+			}
+		}
+	}
+	
+	public static void drawPoint(int x, int y, boolean b, boolean[][] gameBoard) {
+		if(0<=x && x<gameBoard[0].length && 0<=y && y<gameBoard.length) {
+			gameBoard[x][y] = b;
+		}
+	}
 	
 	public static void drawNumber(int i, int x, int y, boolean rToL, boolean[][] gameBoard) {
         String s = String.valueOf(i);
@@ -15,16 +29,8 @@ public class DrawUtil {
         }
 	}
 	
-	public static void clear(int x, int y, int width, int heigth, boolean[][] gameBoard) {
-		for (int w = 0; w < width; w++) {
-			for (int h = 0; h < heigth; h++) {
-				gameBoard[x+w][y+h] = false;
-			}
-		}
-	}
-	
 	public static void drawCipher(int i, int x, int y, boolean[][] gameBoard) {
-		clear(x, y, 4, 7, gameBoard);
+		DrawUtil.clear(x, y, 4, 7, gameBoard);
 		switch(i) {
 		case 0:
 			drawSegment(1, x, y, gameBoard);
@@ -101,46 +107,46 @@ public class DrawUtil {
 	public static void drawSegment(int i, int x, int y, boolean[][] gameBoard) {
 		switch(i) {
 		case 1:
-			gameBoard[x][y] = true;
-			gameBoard[x+1][y] = true;
-			gameBoard[x+2][y] = true;
-			gameBoard[x+3][y] = true;
+			DrawUtil.drawPoint(x, y, true, gameBoard);
+			DrawUtil.drawPoint(x+1, y, true, gameBoard);
+			DrawUtil.drawPoint(x+2, y, true, gameBoard);
+			DrawUtil.drawPoint(x+3, y, true, gameBoard);
 			break;
 		case 2:
-			gameBoard[x][y] = true;
-			gameBoard[x][y+1] = true;
-			gameBoard[x][y+2] = true;
-			gameBoard[x][y+3] = true;
+			DrawUtil.drawPoint(x, y, true, gameBoard);
+			DrawUtil.drawPoint(x, y+1, true, gameBoard);
+			DrawUtil.drawPoint(x, y+2, true, gameBoard);
+			DrawUtil.drawPoint(x, y+3, true, gameBoard);
 			break;
 		case 3:
-			gameBoard[x+3][y] = true;
-			gameBoard[x+3][y+1] = true;
-			gameBoard[x+3][y+2] = true;
-			gameBoard[x+3][y+3] = true;
+			DrawUtil.drawPoint(x+3, y, true, gameBoard);
+			DrawUtil.drawPoint(x+3, y+1, true, gameBoard);
+			DrawUtil.drawPoint(x+3, y+2, true, gameBoard);
+			DrawUtil.drawPoint(x+3, y+3, true, gameBoard);
 			break;
 		case 4:
-			gameBoard[x][y+3] = true;
-			gameBoard[x+1][y+3] = true;
-			gameBoard[x+2][y+3] = true;
-			gameBoard[x+3][y+3] = true;
+			DrawUtil.drawPoint(x, y+3, true, gameBoard);
+			DrawUtil.drawPoint(x+1, y+3, true, gameBoard);
+			DrawUtil.drawPoint(x+2, y+3, true, gameBoard);
+			DrawUtil.drawPoint(x+3, y+3, true, gameBoard);
 			break;
 		case 5:
-			gameBoard[x][y+3] = true;
-			gameBoard[x][y+4] = true;
-			gameBoard[x][y+5] = true;
-			gameBoard[x][y+6] = true;
+			DrawUtil.drawPoint(x, y+3, true, gameBoard);
+			DrawUtil.drawPoint(x, y+4, true, gameBoard);
+			DrawUtil.drawPoint(x, y+5, true, gameBoard);
+			DrawUtil.drawPoint(x, y+6, true, gameBoard);
 			break;
 		case 6:
-			gameBoard[x+3][y+3] = true;
-			gameBoard[x+3][y+4] = true;
-			gameBoard[x+3][y+5] = true;
-			gameBoard[x+3][y+6] = true;
+			DrawUtil.drawPoint(x+3, y+3, true, gameBoard);
+			DrawUtil.drawPoint(x+3, y+4, true, gameBoard);
+			DrawUtil.drawPoint(x+3, y+5, true, gameBoard);
+			DrawUtil.drawPoint(x+3, y+6, true, gameBoard);
 			break;
 		case 7:
-			gameBoard[x][y+6] = true;
-			gameBoard[x+1][y+6] = true;
-			gameBoard[x+2][y+6] = true;
-			gameBoard[x+3][y+6] = true;
+			DrawUtil.drawPoint(x, y+6, true, gameBoard);
+			DrawUtil.drawPoint(x+1, y+6, true, gameBoard);
+			DrawUtil.drawPoint(x+2, y+6, true, gameBoard);
+			DrawUtil.drawPoint(x+3, y+6, true, gameBoard);
 			break;
 		}
 	}
