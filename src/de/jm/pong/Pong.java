@@ -34,11 +34,13 @@ public class Pong {
 		
 		renderer = new Renderer();
 		logic = new Logic(gameX, gameY);
-
-		logic.drawNumber(22, 10, 2);
 		
 		while (!Display.isCloseRequested()) {
-			renderer.render(Logic.gameBoard);
+			if(Display.wasResized()) {
+				renderer.handleResize(Display.getWidth(), Display.getHeight());
+			}
+			logic.tick();
+			renderer.render(logic.gameBoard);
 		    Display.update();
 		}
 		

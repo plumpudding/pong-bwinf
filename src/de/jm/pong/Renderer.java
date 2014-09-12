@@ -13,6 +13,7 @@ import static org.lwjgl.opengl.GL11.glLoadIdentity;
 import static org.lwjgl.opengl.GL11.glMatrixMode;
 import static org.lwjgl.opengl.GL11.glOrtho;
 import static org.lwjgl.opengl.GL11.glVertex2f;
+import static org.lwjgl.opengl.GL11.glViewport;
 
 import org.lwjgl.opengl.Display;
 
@@ -24,6 +25,7 @@ public class Renderer {
 		glLoadIdentity();
 		glOrtho(0, Display.getWidth(), Display.getHeight(), 0, 1, -1);
 		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
 		glColor4f(1f, 1f, 1f, 1f);
 	}
 	
@@ -48,5 +50,14 @@ public class Renderer {
 			glVertex2f((int)(posX*(ratioX)+(ratioX)),	(int)(posY*(ratioY)+ratioY));
 			glVertex2f((int)(posX*(ratioX)),			(int)(posY*(ratioY)+ratioY));
 		glEnd();
+	}
+
+	public void handleResize(int width, int height) {
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		glViewport(0, 0, width, height);
+		glOrtho(0, Display.getWidth(), Display.getHeight(), 0, 1, -1);
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
 	}
 }
