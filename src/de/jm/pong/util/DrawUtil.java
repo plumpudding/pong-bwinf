@@ -1,17 +1,18 @@
 package de.jm.pong.util;
 
+
 public class DrawUtil {
 	
-	public static void clear(int x, int y, int width, int heigth, boolean[][] gameBoard) {
-		for (int w = 0; w < width; w++) {
-			for (int h = 0; h < heigth; h++) {
-				DrawUtil.drawPoint(x+w, y+h, false, gameBoard);
+	public static void clear(boolean[][] gameBoard) {
+		for (int x = 0; x < gameBoard.length-1; x++) {
+			for (int y = 0; y < gameBoard[0].length-1; y++) {
+				gameBoard[x][y] = false;
 			}
 		}
 	}
 	
 	public static void drawPoint(int x, int y, boolean b, boolean[][] gameBoard) {
-		if(0<=x && x<gameBoard[0].length && 0<=y && y<gameBoard.length) {
+		if(x>=0 && x<=gameBoard[0].length-1 && 0<=y && y<=gameBoard.length-1) {
 			gameBoard[x][y] = b;
 		}
 	}
@@ -30,7 +31,6 @@ public class DrawUtil {
 	}
 	
 	public static void drawCipher(int i, int x, int y, boolean[][] gameBoard) {
-		DrawUtil.clear(x, y, 4, 7, gameBoard);
 		switch(i) {
 		case 0:
 			drawSegment(1, x, y, gameBoard);

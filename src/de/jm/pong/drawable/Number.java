@@ -23,6 +23,6 @@ public class Number extends IDrawable {
 	
 	@Override
 	public void draw(boolean[][] board) {
-		DrawUtil.drawNumber(i, getXPos(), getYPos(), false, board);
+		DrawUtil.drawNumber(i, (int)getXPos(), (int)getYPos(), false, board);
 	}
 }

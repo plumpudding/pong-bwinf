@@ -1,8 +1,9 @@
 package de.jm.pong.drawable;
 
 public abstract class IDrawable {
-	
-	public int i, width, heigth, x, y;
+
+	public int i, width, heigth;
+	public float x, y;
 	
 	public int getHeigth() {
 		return heigth;
@@ -12,11 +13,11 @@ public abstract class IDrawable {
 		return width;
 	}
 	
-	public int getXPos() {
+	public float getXPos() {
 		return x;
 	}
 	
-	public int getYPos() {
+	public float getYPos() {
 		return y;
 	}
 	
