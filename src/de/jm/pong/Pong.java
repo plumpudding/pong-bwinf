@@ -35,8 +35,7 @@ public class Pong {
 		renderer = new Renderer();
 		logic = new Logic(gameX, gameY);
 
-		logic.drawCipher(0, 10, 2);
-		logic.drawCipher(1, 50, 2);
+		logic.drawNumber(22, 10, 2);
 		
 		while (!Display.isCloseRequested()) {
 			renderer.render(Logic.gameBoard);
