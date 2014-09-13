@@ -6,6 +6,8 @@ import java.util.List;
 import de.jm.pong.drawable.IDrawable;
 import de.jm.pong.drawable.Number;
 import de.jm.pong.drawable.Pong;
+import de.jm.pong.drawable.Racket;
+import de.jm.pong.drawable.Rectangle;
 import de.jm.pong.util.DrawUtil;
 
 public class Logic {
@@ -20,16 +22,15 @@ public class Logic {
 	public Logic(int gameX, int gameY) {
 		gameBoard = new boolean[gameX][gameY];
 		drawables = new ArrayList<IDrawable>();
-//		p1score = new Number(0, 2, 2);
-//		p2score = new Number(0, 2, 10);
-//		drawables.add(p1score);
-//		drawables.add(p2score);
-//		drawables.add(new Rectangle(1, 1, 1, 8));
-//		drawables.add(new Rectangle(8, 1, 1, 8));
-//		drawables.add(new Rectangle(1, 1, 8, 1));
-//		drawables.add(new Rectangle(1, 8, 7, 1));
-		p = new Pong(315, 2, 8);
+		p = new Pong(120, gameBoard.length/2, gameBoard[0].length/2);
+		p1score = new Number(0, 1, 1, false);;
+		p2score = new Number(0, gameBoard.length, 1, true);
+		drawables.add(new Racket(gameBoard.length-2));
+		drawables.add(new Racket(1));
+		drawables.add(new Rectangle(0, 9, gameBoard.length, 1));
 		drawables.add(p);
+		drawables.add(p1score);
+		drawables.add(p2score);
 	}
 
 	public void tick() {

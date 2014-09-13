@@ -5,6 +5,7 @@ import de.jm.pong.util.DrawUtil;
 public class Number extends IDrawable {
 
 	public int i;
+	public boolean rToL;
 	
 	public void setI(int i) {
 		this.i = i;
@@ -15,14 +16,15 @@ public class Number extends IDrawable {
 		return i;
 	}
 	
-	public Number(int i, int x, int y) {
+	public Number(int i, int x, int y, boolean rToL) {
 		this.x = x;
 		this.y = y;
+		this.rToL = rToL;
 		setI(i);
 	}
 	
 	@Override
 	public void draw(boolean[][] board) {
-		DrawUtil.drawNumber(i, (int)getXPos(), (int)getYPos(), false, board);
+		DrawUtil.drawNumber(i, (int)getXPos(), (int)getYPos(), rToL, board);
 	}
 }

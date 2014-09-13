@@ -21,5 +21,13 @@ public abstract class IDrawable {
 		return y;
 	}
 	
+	public void setXPos(float x) {
+		this.x = x;
+	}
+	
+	public void setYPos(float y) {
+		this.y = y;
+	}
+	
 	public void draw(boolean[][] board) {}
 }

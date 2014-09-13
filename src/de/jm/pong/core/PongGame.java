@@ -1,6 +1,7 @@
 package de.jm.pong.core;
 
 import org.lwjgl.LWJGLException;
+import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 
@@ -34,6 +35,7 @@ public class PongGame {
 			Display.setDisplayMode(new DisplayMode (displayX, displayY));
 			Display.setResizable(true);
 			Display.create();
+			Mouse.create();
 		} catch (LWJGLException e) {
 			e.printStackTrace();
 		}
@@ -52,5 +54,6 @@ public class PongGame {
 		}
 		
 		Display.destroy();
+		Mouse.destroy();
 	}
 }
