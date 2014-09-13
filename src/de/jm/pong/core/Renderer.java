@@ -34,8 +34,10 @@ public class Renderer {
 		
 		for (int x=0;x<gameBoard.length;x++) {
 			for (int y=0;y<gameBoard[0].length;y++) {
+				System.out.println(x);
+				System.out.println(y);
 				if (gameBoard[x][y] == true) {
-					drawQuad(x, y, gameBoard[0].length, gameBoard.length);
+					drawQuad(x, y, gameBoard.length, gameBoard[0].length);
 				}
 			}
 		}
@@ -43,8 +45,8 @@ public class Renderer {
 	
 	private void drawQuad(int posX, int posY, int gameX, int gameY) {
 		glBegin(GL_QUADS);
-			float ratioX = (float)Display.getWidth()/gameY;
-			float ratioY = (float)Display.getHeight()/gameX;
+			float ratioX = (float)Display.getWidth()/gameX;
+			float ratioY = (float)Display.getHeight()/gameY;
 			glVertex2f((int)(posX*(ratioX)),			(int)(posY*(ratioY)));
 			glVertex2f((int)(posX*(ratioX)+(ratioX)),	(int)(posY*(ratioY)));
 			glVertex2f((int)(posX*(ratioX)+(ratioX)),	(int)(posY*(ratioY)+ratioY));

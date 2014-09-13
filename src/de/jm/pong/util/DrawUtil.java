@@ -4,9 +4,17 @@ package de.jm.pong.util;
 public class DrawUtil {
 	
 	public static void clear(boolean[][] gameBoard) {
-		for (int x = 0; x < gameBoard.length-1; x++) {
-			for (int y = 0; y < gameBoard[0].length-1; y++) {
+		for (int x = 0; x <= gameBoard.length-1; x++) {
+			for (int y = 0; y <= gameBoard[0].length-1; y++) {
 				gameBoard[x][y] = false;
+			}
+		}
+	}
+	
+	public static void drawRectangle(int startX, int startY, int width, int heigth, boolean b, boolean[][] gameBoard) {
+		for (int x = startX; x < startX + width; x++) {
+			for (int y = startY; y < startY + heigth; y++) {
+				drawPoint(x, y, b, gameBoard);
 			}
 		}
 	}

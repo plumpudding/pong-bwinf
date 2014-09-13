@@ -5,6 +5,7 @@ import java.util.List;
 
 import de.jm.pong.drawable.IDrawable;
 import de.jm.pong.drawable.Number;
+import de.jm.pong.drawable.Pong;
 import de.jm.pong.util.DrawUtil;
 
 public class Logic {
@@ -18,12 +19,20 @@ public class Logic {
 	
 	public Logic(int gameX, int gameY) {
 		gameBoard = new boolean[gameX][gameY];
+		System.out.println(gameX);
+		System.out.println(gameBoard.length);
+		System.out.println(gameY);
+		System.out.println(gameBoard[0].length);
 		drawables = new ArrayList<IDrawable>();
-		p1score = new Number(0, 2, 2);
-		p2score = new Number(0, 2, 10);
-		drawables.add(p1score);
-		drawables.add(p2score);
-		p = new de.jm.pong.drawable.Pong(135, 50, 20);
+//		p1score = new Number(0, 2, 2);
+//		p2score = new Number(0, 2, 10);
+//		drawables.add(p1score);
+//		drawables.add(p2score);
+//		drawables.add(new Rectangle(1, 1, 1, 8));
+//		drawables.add(new Rectangle(8, 1, 1, 8));
+//		drawables.add(new Rectangle(1, 1, 8, 1));
+//		drawables.add(new Rectangle(1, 8, 7, 1));
+		p = new Pong(315, 2, 8);
 		drawables.add(p);
 	}
 
@@ -32,13 +41,13 @@ public class Logic {
 		for (IDrawable d:drawables) {
 			d.draw(gameBoard);
 		}
-		
-		try {
-			Thread.sleep(250);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+	}
+	
+	public boolean getFieldAt(int x, int y) {
+		if (x>=0 && x<gameBoard.length && y>=0 && y<gameBoard[0].length) {
+			return gameBoard[x][y];
 		}
 		
-		p.move();
+		return true;
 	}
 }

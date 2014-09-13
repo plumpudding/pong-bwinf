@@ -4,20 +4,27 @@ import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 
-public class Pong {
+public class PongGame {
 	public final int displayX;
 	public final int displayY;
 	public final int gameX;
 	public final int gameY;
 	
+	public static PongGame instance;
+	
 	public Renderer renderer;
 	public Logic logic;
 	
-	public Pong(int gameX, int gameY, int displayX, int displayY) {
+	public PongGame(int gameX, int gameY, int displayX, int displayY) {
 		this.gameX = gameX;
 		this.gameY = gameY;
 		this.displayX = displayX;
 		this.displayY = displayY;
+		instance = this;
+	}
+	
+	public static PongGame getPong() {
+		return instance;
 	}
 	
 	public void startGame() {
@@ -25,7 +32,6 @@ public class Pong {
 		try {
 			//Create Display
 			Display.setDisplayMode(new DisplayMode (displayX, displayY));
-			Display.setFullscreen(true);
 			Display.setResizable(true);
 			Display.create();
 		} catch (LWJGLException e) {
@@ -41,6 +47,7 @@ public class Pong {
 			}
 			logic.tick();
 			renderer.render(logic.gameBoard);
+			Display.sync(20);
 		    Display.update();
 		}
 		
