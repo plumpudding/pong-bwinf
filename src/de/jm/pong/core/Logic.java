@@ -19,10 +19,6 @@ public class Logic {
 	
 	public Logic(int gameX, int gameY) {
 		gameBoard = new boolean[gameX][gameY];
-		System.out.println(gameX);
-		System.out.println(gameBoard.length);
-		System.out.println(gameY);
-		System.out.println(gameBoard[0].length);
 		drawables = new ArrayList<IDrawable>();
 //		p1score = new Number(0, 2, 2);
 //		p2score = new Number(0, 2, 10);

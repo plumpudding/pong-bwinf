@@ -32,10 +32,8 @@ public class Renderer {
 	public void render(boolean[][] gameBoard) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
-		for (int x=0;x<gameBoard.length;x++) {
-			for (int y=0;y<gameBoard[0].length;y++) {
-				System.out.println(x);
-				System.out.println(y);
+		for (int y=0;y<gameBoard[0].length;y++) {
+			for (int x=0;x<gameBoard.length;x++) {
 				if (gameBoard[x][y] == true) {
 					drawQuad(x, y, gameBoard.length, gameBoard[0].length);
 				}

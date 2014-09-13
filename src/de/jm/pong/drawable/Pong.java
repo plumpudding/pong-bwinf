@@ -22,11 +22,12 @@ public class Pong extends IDrawable {
 		double estY = y+Math.sin(Math.toRadians(direction-90))/speed;
 		
 		if(PongGame.getPong().logic.getFieldAt((int)Math.round(estX), (int)Math.round(estY))) {
+			System.out.println(!PongGame.getPong().logic.getFieldAt((int)Math.round(estX), (int)Math.round(estY+1)) || !PongGame.getPong().logic.getFieldAt((int)Math.round(estX), (int)Math.round(estY-1)));
 			if (!PongGame.getPong().logic.getFieldAt((int)Math.round(estX), (int)Math.round(estY+1)) || !PongGame.getPong().logic.getFieldAt((int)Math.round(estX), (int)Math.round(estY-1))) {
 				direction = Math.abs(360-direction+180);
 				//horizontal
 			} else {
-				direction = Math.abs(360-direction-90);
+				direction = Math.abs(360-direction);
 				//vertical
 			}
 		}

@@ -20,7 +20,7 @@ public class DrawUtil {
 	}
 	
 	public static void drawPoint(int x, int y, boolean b, boolean[][] gameBoard) {
-		if(x>=0 && x<=gameBoard[0].length-1 && 0<=y && y<=gameBoard.length-1) {
+		if(x>=0 && x<=gameBoard.length-1 && 0<=y && y<=gameBoard[0].length-1) {
 			gameBoard[x][y] = b;
 		}
 	}
