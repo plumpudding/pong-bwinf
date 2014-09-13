@@ -40,7 +40,7 @@ public class Pong extends IDrawable {
 		x += estX;
 		y += estY;
 		
-		DrawUtil.drawPoint(Math.round(x), Math.round(y), true, board);
+		DrawUtil.drawRectangle(Math.round(x), Math.round(y), 2, 2, true, board);
 	}
 	
 	public void setDirection(int dir) {

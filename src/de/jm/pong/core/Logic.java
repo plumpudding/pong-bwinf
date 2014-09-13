@@ -15,6 +15,7 @@ public class Logic {
 	public boolean[][] gameBoard;
 	public List<IDrawable> drawables;
 
+	public Racket p1racket;
 	public Number p1score;
 	public Number p2score;
 	public de.jm.pong.drawable.Pong p;
@@ -25,7 +26,8 @@ public class Logic {
 		p = new Pong(120, gameBoard.length/2, gameBoard[0].length/2);
 		p1score = new Number(0, gameBoard.length, 1, true);;
 		p2score = new Number(0, 1, 1, false);
-		drawables.add(new Racket(gameBoard.length-2));
+		p1racket = new Racket(gameBoard.length-2);
+		drawables.add(p1racket);
 		drawables.add(new Racket(1));
 		drawables.add(new Rectangle(0, 9, gameBoard.length, 1));
 		drawables.add(p);
