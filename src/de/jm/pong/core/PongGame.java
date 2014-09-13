@@ -49,7 +49,7 @@ public class PongGame {
 			}
 			logic.tick();
 			renderer.render(logic.gameBoard);
-			Display.sync(20);
+			Display.sync(60);
 		    Display.update();
 		}
 		
